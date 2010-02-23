@@ -1,0 +1,70 @@
+<!-- Ant build file for base64coder Java version -->
+<project name="base64Coder" default="buildAll">
+
+<property name="srcDir"            location="src/main/java"/>
+<property name="classesDir"        location="target/classes"/>
+<property name="javaDocDir"        location="target/javadoc"/>
+<property name="junitJar"          location="lib/junit-4.8.1.jar"/>
+<property name="testSrcDir"        location="src/test/java"/>
+<property name="testClassesDir"    location="target/test-classes"/>
+<property name="testReportsDir"    location="target/test-reports"/>
+
+<target name="buildAll" description="Compiles and generates the API docs."
+   depends="compile, javaDoc">
+</target>
+
+<target name="compile" description="Compiles the main class.">
+ <delete dir="${classesDir}" failonerror="true"/>
+ <mkdir dir="${classesDir}"/>
+ <javac srcdir="${srcDir}" deprecation="true" includeAntRuntime="false" debug="true" debuglevel="lines,source"
+    target="1.5" destdir="${classesDir}">
+  <compilerarg line="-Xlint -Xmaxerrs 6"/>
+ </javac>
+</target>
+
+<target name="compileTest" description="Compiles the test class.">
+ <delete dir="${testClassesDir}" failonerror="true"/>
+ <mkdir dir="${testClassesDir}"/>
+ <!-- Note: The "Sun proprietary" warnings cannot be suppressed as of 2010-02. -->
+ <javac srcdir="${testSrcDir}" deprecation="true" includeAntRuntime="false" debug="true" debuglevel="lines,source"
+    target="1.5" destdir="${testClassesDir}">
+  <compilerarg line="-Xlint -Xmaxerrs 6"/>
+  <classpath>
+   <pathelement location="${junitJar}"/>
+   <pathelement location="${classesDir}"/>
+  </classpath>
+ </javac>
+</target>
+
+<target name="javaDoc" description="Generates the API documentation (JavaDoc)">
+ <delete dir="${javaDocDir}" failonerror="true"/>
+ <mkdir dir="${javaDocDir}"/>
+ <javadoc sourcepath="${srcDir}" destdir="${javaDocDir}" failonerror="true"
+      nodeprecatedlist="true" notree="true" noindex="true" nohelp="true" nonavbar="true"
+      bottom="&lt;br&gt;&lt;span style='font-size: 10pt; font-family: Arial, Helvetica, sans-serif'&gt;Home page: &lt;a href='http://www.source-code.biz'&gt;http://www.source-code.biz&lt;/a&gt;&lt;/span&gt;">
+ <!-- Because it's only a single HTML file, we move it out of the JavaDoc dir. -->
+ </javadoc>
+  <copy file="${javaDocDir}/biz/source_code/base64Coder/Base64Coder.html" todir="target"/>
+  <replace dir="target" includes="Base64Coder.html">
+   <replacefilter token="../../../biz/source_code/base64Coder/" value=""/>
+   <replacefilter token="../../../" value=""/>
+  </replace>
+ <delete dir="${javaDocDir}" failonerror="true"/>
+</target>
+
+<target name="test" description="Runs the JUnit tests."
+   depends="compileTest">
+ <delete dir="${testReportsDir}" failonerror="true"/>
+ <mkdir dir="${testReportsDir}"/>
+ <junit haltonfailure="on">
+  <classpath>
+   <pathelement location="${junitJar}"/>
+   <pathelement location="${classesDir}"/>
+   <pathelement location="${testClassesDir}"/>
+  </classpath>
+  <formatter type="plain"/>
+  <test name="TestBase64Coder" todir="${testReportsDir}"/>
+ </junit>
+</target>
+
+</project>
