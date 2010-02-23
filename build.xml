@@ -4,22 +4,27 @@
 <property name="srcDir"            location="src/main/java"/>
 <property name="classesDir"        location="target/classes"/>
 <property name="javaDocDir"        location="target/javadoc"/>
+<property name="jarFile"           location="target/base64coder.jar"/>
 <property name="junitJar"          location="lib/junit-4.8.1.jar"/>
 <property name="testSrcDir"        location="src/test/java"/>
 <property name="testClassesDir"    location="target/test-classes"/>
 <property name="testReportsDir"    location="target/test-reports"/>
 
 <target name="buildAll" description="Compiles and generates the API docs."
-   depends="compile, javaDoc">
+   depends="buildJar, javaDoc">
 </target>
 
-<target name="compile" description="Compiles the main class.">
+<target name="buildJar" description="Compiles the Java source and builds the JAR file.">
  <delete dir="${classesDir}" failonerror="true"/>
  <mkdir dir="${classesDir}"/>
  <javac srcdir="${srcDir}" deprecation="true" includeAntRuntime="false" debug="true" debuglevel="lines,source"
     target="1.5" destdir="${classesDir}">
   <compilerarg line="-Xlint -Xmaxerrs 6"/>
  </javac>
+ <jar destfile="${jarFile}">
+  <fileset dir="${classesDir}"/>
+ </jar>
+ <delete dir="${classesDir}" failonerror="true"/>
 </target>
 
 <target name="compileTest" description="Compiles the test class.">
@@ -31,7 +36,7 @@
   <compilerarg line="-Xlint -Xmaxerrs 6"/>
   <classpath>
    <pathelement location="${junitJar}"/>
-   <pathelement location="${classesDir}"/>
+   <pathelement location="${jarFile}"/>
   </classpath>
  </javac>
 </target>
@@ -59,7 +64,7 @@
  <junit haltonfailure="on">
   <classpath>
    <pathelement location="${junitJar}"/>
-   <pathelement location="${classesDir}"/>
+   <pathelement location="${jarFile}"/>
    <pathelement location="${testClassesDir}"/>
   </classpath>
   <formatter type="plain"/>
