@@ -33,7 +33,7 @@ private static void decodeStream (BufferedReader in, OutputStream out) throws IO
    while (true) {
       String s = in.readLine();
       if (s == null) break;
-      byte[] buf = Base64Coder.decode(s);
+      byte[] buf = Base64Coder.decodeLines(s);
       out.write (buf); }}
 
 } // end class Base64FileDecoder

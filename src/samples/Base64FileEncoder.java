@@ -35,7 +35,7 @@ private static void encodeStream (InputStream in, BufferedWriter out) throws IOE
    while (true) {
       int len = in.read(buf);
       if (len <= 0) break;
-      out.write (Base64Coder.encode(buf, len));
+      out.write (Base64Coder.encode(buf, 0, len));
       out.newLine(); }}
 
 } // end class Base64FileEncoder
