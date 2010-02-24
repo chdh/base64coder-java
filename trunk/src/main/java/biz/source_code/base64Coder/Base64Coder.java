@@ -23,7 +23,7 @@ package biz.source_code.base64Coder;
 * <p>
 * Project home page: <a href="http://www.source-code.biz">www.source-code.biz</a><br>
 * Author: Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland<br>
-* Multi-licensed: EPL/LGPL/AL/BSD.
+* Multi-licensed: EPL / LGPL / AL / BSD.
 */
 public class Base64Coder {
 
