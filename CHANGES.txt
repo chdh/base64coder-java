@@ -3,14 +3,14 @@ Base64Coder Changes
 -------------------
 
 2010-02-23 chdh
-New directory layout and build script.
+New directory layout.
+New Ant build script.
 Methods added:
-  encode(byte[],int,int)
-  encode(byte[],int,int)
-  decode(char[],int,int)
   encodeLines(byte[])
   encodeLines(byte[],int,int,int,String)
   decodeLines(String)
+  encode(byte[],int,int)
+  decode(char[],int,int)
 
 2010-01-27 chdh
 Package name added.
