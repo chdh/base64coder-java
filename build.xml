@@ -1,18 +1,27 @@
 <!-- Ant build file for base64coder Java version -->
 <project name="base64Coder" default="buildAll">
 
-<property name="srcDir"            location="src/main/java"/>
-<property name="classesDir"        location="target/classes"/>
-<property name="javaDocDir"        location="target/javadoc"/>
-<property name="jarFile"           location="target/base64coder.jar"/>
-<property name="junitJar"          location="lib/junit-4.8.1.jar"/>
-<property name="testSrcDir"        location="src/test/java"/>
-<property name="testClassesDir"    location="target/test-classes"/>
-<property name="testReportsDir"    location="target/test-reports"/>
+<fail message="This buildfile requires at least Ant 1.8.">
+ <condition>
+  <not>
+   <antversion atleast="1.8"/>
+  </not>
+ </condition>
+</fail>
+
+<property environment="env"/>
+
+<property name="srcDir"                 location="src/main/java"/>
+<property name="classesDir"             location="target/classes"/>
+<property name="javaDocDir"             location="target/javadoc"/>
+<property name="jarFile"                location="target/base64coder.jar"/>
+<property name="testSrcDir"             location="src/test/java"/>
+<property name="testClassesDir"         location="target/test-classes"/>
+<property name="testReportsDir"         location="target/test-reports"/>
+<property name="jUnitVersionToDownload" value="4.7"/>
 
 <target name="buildAll" description="Compiles and generates the API docs."
-   depends="buildJar, javaDoc">
-</target>
+   depends="buildJar, javaDoc"/>
 
 <target name="buildJar" description="Compiles the Java source and builds the JAR file.">
  <delete dir="${classesDir}" failonerror="true"/>
@@ -27,7 +36,7 @@
  <delete dir="${classesDir}" failonerror="true"/>
 </target>
 
-<target name="compileTest" description="Compiles the test class.">
+<target name="compileTest" description="Compiles the test class." depends="getJUnitJar">
  <delete dir="${testClassesDir}" failonerror="true"/>
  <mkdir dir="${testClassesDir}"/>
  <!-- Note: The "Sun proprietary" warnings cannot be suppressed as of 2010-02. -->
@@ -35,7 +44,7 @@
     target="1.5" destdir="${testClassesDir}">
   <compilerarg line="-Xlint -Xmaxerrs 6"/>
   <classpath>
-   <pathelement location="${junitJar}"/>
+   <pathelement location="${jUnitJar}"/>
    <pathelement location="${jarFile}"/>
   </classpath>
  </javac>
@@ -58,18 +67,30 @@
 </target>
 
 <target name="test" description="Runs the JUnit tests."
-   depends="compileTest">
+   depends="compileTest, getJUnitJar">
  <delete dir="${testReportsDir}" failonerror="true"/>
  <mkdir dir="${testReportsDir}"/>
- <junit haltonfailure="on">
+ <junit haltonfailure="true">
   <classpath>
-   <pathelement location="${junitJar}"/>
+   <pathelement location="${jUnitJar}"/>
    <pathelement location="${jarFile}"/>
    <pathelement location="${testClassesDir}"/>
   </classpath>
   <formatter type="plain"/>
   <test name="TestBase64Coder" todir="${testReportsDir}"/>
  </junit>
+</target>
+
+<target name="getJUnitJar" depends="getJUnitJar2" unless="jUnitJar">
+ <!-- Download the JUnit JAR file from the central Maven repository. -->
+ <property name="jUnitJar" location="target/junit-${jUnitVersionToDownload}.jar"/>
+ <get src="http://repo1.maven.org/maven2/junit/junit/${jUnitVersionToDownload}/junit-${jUnitVersionToDownload}.jar" dest="${jUnitJar}" skipexisting="true"/>
+</target>
+<target name="getJUnitJar2" unless="jUnitJar">
+ <!-- The OS environment variable JUNIT_JAR can be set to the path name of the JUnit JAR file. -->
+ <condition property="jUnitJar" value="${env.JUNIT_JAR}">
+  <isset property="env.JUNIT_JAR"/>
+ </condition>
 </target>
 
 </project>
