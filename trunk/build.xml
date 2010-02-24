@@ -18,12 +18,13 @@
 <property name="testSrcDir"             location="src/test/java"/>
 <property name="testClassesDir"         location="target/test-classes"/>
 <property name="testReportsDir"         location="target/test-reports"/>
+<property name="distribZipFile"         location="target/base64coder.zip"/>
 <property name="jUnitVersionToDownload" value="4.7"/>
 
-<target name="buildAll" description="Compiles and generates the API docs."
+<target name="buildAll" description="Compiles, builds the JAR and generates the API docs."
    depends="buildJar, javaDoc"/>
 
-<target name="buildJar" description="Compiles the Java source and builds the JAR file.">
+<target name="buildJar" description="Compiles the main Java sources and builds the JAR file.">
  <delete dir="${classesDir}" failonerror="true"/>
  <mkdir dir="${classesDir}"/>
  <javac srcdir="${srcDir}" deprecation="true" includeAntRuntime="false" debug="true" debuglevel="lines,source"
@@ -66,8 +67,7 @@
  <delete dir="${javaDocDir}" failonerror="true"/>
 </target>
 
-<target name="test" description="Runs the JUnit tests."
-   depends="compileTest, getJUnitJar">
+<target name="test" description="Runs the JUnit tests." depends="compileTest, getJUnitJar">
  <delete dir="${testReportsDir}" failonerror="true"/>
  <mkdir dir="${testReportsDir}"/>
  <junit haltonfailure="true">
@@ -91,6 +91,29 @@
  <condition property="jUnitJar" value="${env.JUNIT_JAR}">
   <isset property="env.JUNIT_JAR"/>
  </condition>
+</target>
+
+<target name="buildDistribZip" description="Builds the distribution ZIP file." depends="buildAll">
+ <delete file="${distribZipFile}"/>
+ <zip destfile="${distribZipFile}">
+  <zipfileset dir="." includes="build.xml, CHANGES.txt, README.txt, src/, target/base64coder.jar, target/Base64Coder.html"/>
+ </zip>
+</target>
+
+<target name="updateWebsite" depends="buildAll, buildDistribZip">
+ <property name="websiteDir" location="${env.base64CoderJavaWebsiteDir}"/>
+ <copy todir="${websiteDir}" overwrite="true">
+  <fileset dir="src" includes="**/*.java"/>
+  <fileset dir="target" includes="Base64Coder.html, base64coder.jar"/>
+  <fileset file="${distribZipFile}"/>
+  <chainedmapper>
+   <flattenmapper/>
+   <mapper>
+    <globmapper from="*.java" to="*.java.txt"/>
+    <identitymapper/>
+   </mapper>
+  </chainedmapper>
+ </copy>
 </target>
 
 </project>
