@@ -24,9 +24,9 @@ The following Ant targets are useful to build and test the software:
 
  ant test
 
-   This Ant target runs the test program TestBase64Coder.java using
-   JUnit. A report is written to target/test-reports.
+   This Ant target runs the test module TestBase64Coder.java using
+   JUnit. A report is written to the directory "target/test-reports".
    The compiler warning messages "... is Sun proprietary API ..." are
    normal and cannot be suppressed. The warnings occur because the
-   test program uses Suns proprietary Base64 classes to test the
+   test program uses Sun's proprietary Base64 classes to test the
    Base64Coder class.
