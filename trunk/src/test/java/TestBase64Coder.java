@@ -68,5 +68,4 @@ public void test3() throws Exception {
       assertArrayEquals (b0, b1);
       assertArrayEquals (b0, b2); }}
 
-
 } // end class TestBase64Coder
