@@ -2,6 +2,10 @@
 Base64Coder Changes
 -------------------
 
+2010-09-21 chdh
+Added GPL (License).
+Added "... or later" to EPL, LGPL and APL.
+
 2010-02-23 chdh
 New directory layout.
 New Ant build script.
