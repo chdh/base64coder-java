@@ -1,13 +1,61 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>biz.source_code</groupId>
   <artifactId>base64coder</artifactId>
+  <version>2010-09-21</version>
+  <packaging>jar</packaging>
   <name>Base64Coder</name>
-  <version>2010-02-23</version>
   <description>A Base64 encoder/decoder in Java.</description>
   <url>http://www.source-code.biz/base64coder/java</url>
+
+  <organization>
+    <name>source-code.biz</name>
+    <url>http://www.source-code.biz/</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>EPL (Eclipse Public License), V1.0 or later</name>
+      <url>http://www.eclipse.org/legal</url>
+      <distribution>repo</distribution>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+    </license>
+    <license>
+      <name>GNU LGPL (GNU Lesser General Public License), V2.1 or later</name>
+      <url>http://www.gnu.org/licenses/lgpl.html</url>
+      <distribution>repo</distribution>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+    </license>
+    <license>
+      <name>GNU LGP (GNU General Public License), V2 or later</name>
+      <url>http://www.gnu.org/licenses/lgpl.html</url>
+      <distribution>repo</distribution>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+    </license>
+    <license>
+      <name>Apache License, V2.0 or later</name>
+      <url>http://www.apache.org/licenses</url>
+      <distribution>repo</distribution>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+    </license>
+    <license>
+      <name>BSD License</name>
+      <url>http://www.opensource.org/licenses/bsd-license.php</url>
+      <distribution>repo</distribution>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>http://svn.source-code.biz/viewvc/base64coder-java/trunk/</url>
+    <connection>scm:svn:http://svn.source-code.biz/base64coder-java/trunk/</connection>
+    <developerConnection>scm:svn:http://svn.source-code.biz/base64coder-java/trunk/</developerConnection>
+  </scm>
+
   <developers>
     <developer>
+      <id>chdh</id>
       <name>Christian d'Heureuse</name>
       <email>chdh@inventec.ch</email>
       <timezone>+1</timezone>
@@ -17,50 +65,66 @@
       <roles>
         <role>architect</role>
         <role>developer</role>
+        <role>mavenizer</role>
       </roles>
     </developer>
   </developers>
-  <contributors>
-    <contributor>
-      <name>...</name>
-      <email>...</email>
-      <roles>
-        <role>mavenizer</role>
-      </roles>
-    </contributor>
-  </contributors>
-  <scm>
-    <developerConnection>scm:svn:http:///svn.source-code.biz/base64coder-java/trunk/</developerConnection>
-    <url>http://svn.source-code.biz/viewvc/base64coder-java/trunk/</url>
-  </scm>
-  <organization>
-    <name>source-code.biz</name>
-    <url>http://www.source-code.biz/</url>
-  </organization>
-  <licenses>
-    <license>
-      <name>EPL (Eclipse Public License)</name>
-      <url>http://www.eclipse.org/legal</url>
-      <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+AL+BSD. Please contact the author if you need another license.</comments>
-    </license>
-    <license>
-      <name>GNU LGPL (GNU Lesser General Public License)</name>
-      <url>http://www.gnu.org/licenses/lgpl.html</url>
-      <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+AL+BSD. Please contact the author if you need another license.</comments>
-    </license>
-    <license>
-      <name>Apache License</name>
-      <url>http://www.apache.org/licenses</url>
-      <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+AL+BSD. Please contact the author if you need another license.</comments>
-    </license>
-    <license>
-      <name>BSD License</name>
-      <url>http://www.opensource.org/licenses/bsd-license.php</url>
-      <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+AL+BSD. Please contact the author if you need another license.</comments>
-    </license>
-  </licenses>
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>5</version>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+
+    <plugins>
+
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
 </project>
