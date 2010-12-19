@@ -137,6 +137,7 @@
             <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
             <Export-Package>biz.source_code.base64Coder.*</Export-Package>
             <Bundle-Version>1.0.0.${project.version}</Bundle-Version>
+            <Bundle-DocURL>${pom.url}</Bundle-DocURL>
           </instructions>
         </configuration>
       </plugin>
