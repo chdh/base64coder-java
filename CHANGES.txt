@@ -5,6 +5,7 @@ Base64Coder Changes
 2010-12-19 chdh
 - Maven POM file changed to use the Apache Felix Bundle Plugin in order
   to generate a OSGi bundle definition in the JAR manifest.
+  Thanks to Don Corley for your assistance.
 
 2010-09-21 chdh
 - Added GPL (License).
