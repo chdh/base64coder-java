@@ -2,37 +2,41 @@
 Base64Coder Changes
 -------------------
 
+2010-12-19 chdh
+- Maven POM file changed to use the Apache Felix Bundle Plugin in order
+  to generate a OSGi bundle definition in the JAR manifest.
+
 2010-09-21 chdh
-Added GPL (License).
-Added "... or later" to EPL, LGPL and APL.
+- Added GPL (License).
+- Added "... or later" to EPL, LGPL and APL.
 
 2010-02-23 chdh
-New directory layout.
-New Ant build script.
-Methods added:
-  encodeLines(byte[])
-  encodeLines(byte[],int,int,int,String)
-  decodeLines(String)
-  encode(byte[],int,int)
-  decode(char[],int,int)
+- New directory layout.
+- New Ant build script.
+- Methods added:
+    encodeLines(byte[])
+    encodeLines(byte[],int,int,int,String)
+    decodeLines(String)
+    encode(byte[],int,int)
+    decode(char[],int,int)
 
 2010-01-27 chdh
-Package name added.
+- Package name added.
 
 2009-09-16 chdh
-Additional license (BSD) added.
+- Additional license (BSD) added.
 
 2009-07-16 chdh
-Additional licenses (EPL/AL) added.
+- Additional licenses (EPL/AL) added.
 
 2006-11-21 chdh
-Method encode(String) renamed to encodeString(String).
-Method decode(String) renamed to decodeString(String).
-New method encode(byte[],int) added.
-New method decode(String) added.
+- Method encode(String) renamed to encodeString(String).
+- Method decode(String) renamed to decodeString(String).
+- New method encode(byte[],int) added.
+- New method decode(String) added.
 
 2005-08-11 chdh
-Lincense changed from GPL to LGPL.
+- Lincense changed from GPL to LGPL.
 
 2003-07-22 chdh (Christian d'Heureuse)
-Module created.
+- Module created.
