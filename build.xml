@@ -21,14 +21,14 @@
 <property name="distribZipFile"         location="target/base64coder.zip"/>
 <property name="jUnitVersionToDownload" value="4.7"/>
 
-<target name="buildAll" description="Compiles, builds the JAR and generates the API docs."
+<target name="buildAll" description="Compiles, builds the JAR file and generates the API docs."
    depends="buildJar, javaDoc"/>
 
 <target name="buildJar" description="Compiles the main Java sources and builds the JAR file.">
  <delete dir="${classesDir}" failonerror="true"/>
  <mkdir dir="${classesDir}"/>
  <javac srcdir="${srcDir}" deprecation="true" includeAntRuntime="false" debug="true" debuglevel="lines,source"
-    target="1.5" destdir="${classesDir}">
+    source="1.5" target="1.5" destdir="${classesDir}">
   <compilerarg line="-Xlint -Xmaxerrs 6"/>
  </javac>
  <jar destfile="${jarFile}">
@@ -42,7 +42,7 @@
  <mkdir dir="${testClassesDir}"/>
  <!-- Note: The "Sun proprietary" warnings cannot be suppressed as of 2010-02. -->
  <javac srcdir="${testSrcDir}" deprecation="true" includeAntRuntime="false" debug="true" debuglevel="lines,source"
-    target="1.5" destdir="${testClassesDir}">
+    source="1.5" target="1.5" destdir="${testClassesDir}">
   <compilerarg line="-Xlint -Xmaxerrs 6"/>
   <classpath>
    <pathelement location="${jUnitJar}"/>
@@ -96,15 +96,16 @@
 <target name="buildDistribZip" description="Builds the distribution ZIP file." depends="buildAll">
  <delete file="${distribZipFile}"/>
  <zip destfile="${distribZipFile}">
-  <zipfileset dir="." includes="build.xml, CHANGES.txt, README.txt, src/, target/base64coder.jar, target/Base64Coder.html"/>
+  <zipfileset dir="." includes="build.xml, pom.xml, CHANGES.txt, README.txt, src/, target/base64coder.jar, target/Base64Coder.html"/>
  </zip>
 </target>
 
 <target name="updateWebsite" depends="buildAll, buildDistribZip">
+ <fail unless="env.base64CoderJavaWebsiteDir" message="Undefined website directory."/>
  <property name="websiteDir" location="${env.base64CoderJavaWebsiteDir}"/>
  <copy todir="${websiteDir}" overwrite="true">
   <fileset dir="src" includes="**/*.java"/>
-  <fileset dir="target" includes="Base64Coder.html, base64coder.jar"/>
+  <fileset dir="target" includes="Base64Coder.html"/>
   <fileset file="${distribZipFile}"/>
   <chainedmapper>
    <flattenmapper/>
