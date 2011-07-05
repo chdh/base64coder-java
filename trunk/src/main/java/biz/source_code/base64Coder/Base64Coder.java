@@ -25,7 +25,7 @@ package biz.source_code.base64Coder;
 * <p>
 * Project home page: <a href="http://www.source-code.biz/base64coder/java/">www.source-code.biz/base64coder/java</a><br>
 * Author: Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland<br>
-* Multi-licensed: EPL / LGPL / GPL / AL / BSD.
+* Multi-licensed: EPL / LGPL / GPL / AL / BSD / MIT.
 */
 public class Base64Coder {
 
