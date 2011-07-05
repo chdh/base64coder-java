@@ -4,6 +4,7 @@ Base64Coder Changes
 
 2011-07-05 chdh
 - MIT license added.
+- build.xml revised.
 
 2010-12-19 chdh
 - Maven POM file changed to use the Apache Felix Bundle Plugin in order
