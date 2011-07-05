@@ -9,6 +9,7 @@
 //  GPL, GNU General Public License, V2 or later, http://www.gnu.org/licenses/gpl.html
 //  AL, Apache License, V2.0 or later, http://www.apache.org/licenses
 //  BSD, BSD License, http://www.opensource.org/licenses/bsd-license.php
+//  MIT, MIT License, http://www.opensource.org/licenses/MIT
 //
 // Please contact the author if you need another license.
 // This module is provided "as is", without warranties of any kind.

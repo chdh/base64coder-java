@@ -19,31 +19,37 @@
       <name>EPL (Eclipse Public License), V1.0 or later</name>
       <url>http://www.eclipse.org/legal</url>
       <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD+MIT. Please contact the author if you need another license.</comments>
     </license>
     <license>
       <name>GNU LGPL (GNU Lesser General Public License), V2.1 or later</name>
       <url>http://www.gnu.org/licenses/lgpl.html</url>
       <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD+MIT. Please contact the author if you need another license.</comments>
     </license>
     <license>
       <name>GNU LGP (GNU General Public License), V2 or later</name>
       <url>http://www.gnu.org/licenses/lgpl.html</url>
       <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD+MIT. Please contact the author if you need another license.</comments>
     </license>
     <license>
       <name>Apache License, V2.0 or later</name>
       <url>http://www.apache.org/licenses</url>
       <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD+MIT. Please contact the author if you need another license.</comments>
     </license>
     <license>
       <name>BSD License</name>
       <url>http://www.opensource.org/licenses/bsd-license.php</url>
       <distribution>repo</distribution>
-      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD. Please contact the author if you need another license.</comments>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD+MIT. Please contact the author if you need another license.</comments>
+    </license>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+      <comments>Base64Coder is multi-licensed, EPL+LGPL+GPL+AL+BSD+MIT. Please contact the author if you need another license.</comments>
     </license>
   </licenses>
 
