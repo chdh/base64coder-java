@@ -24,10 +24,10 @@
  </jar>
 </target>
 
-<target name="javaDoc" description="Generates the API documentation (JavaDoc)">
- <delete dir="target/javadoc" failonerror="true"/>
- <mkdir dir="target/javadoc"/>
- <javadoc sourcepath="src/main/java" destdir="target/javadoc" failonerror="true"
+<target name="javadoc" description="Generates the API documentation (JavaDoc)">
+ <delete dir="target/apidoc" failonerror="true"/>
+ <mkdir dir="target/apidoc"/>
+ <javadoc sourcepath="src/main/java" destdir="target/apidoc" failonerror="true"
     link="http://docs.oracle.com/javase/6/docs/api/"/>
 </target>
 
@@ -83,10 +83,10 @@
 <target name="buildDistribZip" description="Builds the distribution ZIP file.">
  <antcall target="clean"/>
  <antcall target="package"/>
- <antcall target="javaDoc"/>
+ <antcall target="javadoc"/>
  <zip destfile="target/base64coder.zip">
   <zipfileset dir="."
-   includes="build.xml, pom.xml, CHANGES.txt, README.txt, src/, target/base64coder.jar, target/javadoc/"/>
+   includes="build.xml, pom.xml, CHANGES.txt, README.txt, src/, target/base64coder.jar, target/apidoc/"/>
  </zip>
 </target>
 
@@ -105,7 +105,7 @@
   </chainedmapper>
  </copy>
  <copy todir="${websiteDir}" overwrite="true">
-  <fileset dir="target" includes="base64coder.zip, javadoc/"/>
+  <fileset dir="target" includes="base64coder.zip, apidoc/"/>
  </copy>
 </target>
 
