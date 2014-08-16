@@ -7,6 +7,7 @@
 //  EPL, Eclipse Public License, V1.0 or later, http://www.eclipse.org/legal
 //  LGPL, GNU Lesser General Public License, V2.1 or later, http://www.gnu.org/licenses/lgpl.html
 //  GPL, GNU General Public License, V2 or later, http://www.gnu.org/licenses/gpl.html
+//  AGPL, GNU Affero General Public License V1 or later, http://www.gnu.org/licenses/agpl.html
 //  AL, Apache License, V2.0 or later, http://www.apache.org/licenses
 //  BSD, BSD License, http://www.opensource.org/licenses/bsd-license.php
 //  MIT, MIT License, http://www.opensource.org/licenses/MIT

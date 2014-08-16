@@ -2,6 +2,9 @@
 Base64Coder Changes
 -------------------
 
+2014-08-17 chdh
+- AGPL license added.
+
 2011-07-05 chdh
 - MIT license added.
 - build.xml revised.
