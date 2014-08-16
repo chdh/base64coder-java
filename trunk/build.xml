@@ -94,6 +94,7 @@
  <fail unless="env.base64CoderJavaWebsiteDir" message="Undefined website directory."/>
  <property name="websiteDir" location="${env.base64CoderJavaWebsiteDir}"/>
  <antcall target="buildDistribZip"/>
+ <delete dir="${websiteDir}/apidocs" failonerror="true"/>
  <copy todir="${websiteDir}" overwrite="true">
   <fileset dir="src" includes="**/*.java"/>
   <chainedmapper>
