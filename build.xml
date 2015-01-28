@@ -28,7 +28,7 @@
  <delete dir="target/apidocs" failonerror="true"/>
  <mkdir dir="target/apidocs"/>
  <javadoc sourcepath="src/main/java" destdir="target/apidocs" failonerror="true"
-    link="http://docs.oracle.com/javase/6/docs/api/"/>
+    link="https://docs.oracle.com/javase/7/docs/api/"/>
 </target>
 
 <!-- Test ===================================================================-->
