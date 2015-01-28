@@ -84,8 +84,8 @@ public static String encodeLines (byte[] in, int iOff, int iLen, int lineLen, St
    int ip = 0;
    while (ip < iLen) {
       int l = Math.min(iLen-ip, blockLen);
-      buf.append (encode(in, iOff+ip, l));
-      buf.append (lineSeparator);
+      buf.append(encode(in, iOff+ip, l));
+      buf.append(lineSeparator);
       ip += l; }
    return buf.toString(); }
 
@@ -194,7 +194,7 @@ public static byte[] decode (char[] in) {
 * @throws      IllegalArgumentException If the input is not valid Base64 encoded data.
 */
 public static byte[] decode (char[] in, int iOff, int iLen) {
-   if (iLen%4 != 0) throw new IllegalArgumentException ("Length of Base64 encoded input string is not a multiple of 4.");
+   if (iLen%4 != 0) throw new IllegalArgumentException("Length of Base64 encoded input string is not a multiple of 4.");
    while (iLen > 0 && in[iOff+iLen-1] == '=') iLen--;
    int oLen = (iLen*3) / 4;
    byte[] out = new byte[oLen];
@@ -207,13 +207,13 @@ public static byte[] decode (char[] in, int iOff, int iLen) {
       int i2 = ip < iEnd ? in[ip++] : 'A';
       int i3 = ip < iEnd ? in[ip++] : 'A';
       if (i0 > 127 || i1 > 127 || i2 > 127 || i3 > 127)
-         throw new IllegalArgumentException ("Illegal character in Base64 encoded data.");
+         throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
       int b0 = map2[i0];
       int b1 = map2[i1];
       int b2 = map2[i2];
       int b3 = map2[i3];
       if (b0 < 0 || b1 < 0 || b2 < 0 || b3 < 0)
-         throw new IllegalArgumentException ("Illegal character in Base64 encoded data.");
+         throw new IllegalArgumentException("Illegal character in Base64 encoded data.");
       int o0 = ( b0       <<2) | (b1>>>4);
       int o1 = ((b1 & 0xf)<<4) | (b2>>>2);
       int o2 = ((b2 &   3)<<6) |  b3;
