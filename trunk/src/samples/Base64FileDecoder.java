@@ -13,9 +13,9 @@ public class Base64FileDecoder {
 
 public static void main (String args[]) throws IOException {
    if (args.length != 2) {
-      System.out.println ("Command line parameters: inputFileName outputFileName");
-      System.exit (9); }
-   decodeFile (args[0], args[1]); }
+      System.out.println("Command line parameters: inputFileName outputFileName");
+      System.exit(9); }
+   decodeFile(args[0], args[1]); }
 
 private static void decodeFile (String inputFileName, String outputFileName) throws IOException {
    BufferedReader in = null;
@@ -23,7 +23,7 @@ private static void decodeFile (String inputFileName, String outputFileName) thr
    try {
       in = new BufferedReader(new FileReader(inputFileName));
       out = new BufferedOutputStream(new FileOutputStream(outputFileName));
-      decodeStream (in, out);
+      decodeStream(in, out);
       out.flush(); }
     finally {
       if (in != null) in.close();
@@ -34,6 +34,6 @@ private static void decodeStream (BufferedReader in, OutputStream out) throws IO
       String s = in.readLine();
       if (s == null) break;
       byte[] buf = Base64Coder.decodeLines(s);
-      out.write (buf); }}
+      out.write(buf); }}
 
 } // end class Base64FileDecoder
